@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="flex flex-col items-center justify-center min-h-[calc(100vh-200px)]">
+    <h1 class="text-5xl md:text-7xl font-bold text-brand-dark tracking-tight text-center">
+        {% if session.get('user') %}
+        Where to next, {{ session.user.firstName }}?
+        {% else %}
+        Fonteyn Holidayparks
+        {% endif %}
+    </h1>
+</div>
+{% endblock %}

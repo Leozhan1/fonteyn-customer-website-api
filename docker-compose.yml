@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  customer-api:
+    build: ./Customer API
+    container_name: customer-api
+    env_file:
+      - ./Customer API/.env
+    networks:
+      - fonteyn-network
+
+  customer-website:
+    build: ./Customer Website
+    container_name: customer-website
+    env_file:
+      - ./Customer Website/.env
+    environment:
+      - API-URL=http://customer-api:80
+    depends_on:
+      - customer-api
+    networks:
+      - fonteyn-network
+
+  nginx:
+    build: ./Nginx
+    container_name: nginx-proxy
+    ports:
+      - "80:80"
+    depends_on:
+      - customer-website
+      - customer-api
+    networks:
+      - fonteyn-network
+
+networks:
+  fonteyn-network:
+    driver: bridge

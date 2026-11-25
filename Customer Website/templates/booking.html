@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}Booking | Fonteyn Holidayparks{% endblock %}
+
+{% block content %}
+<section class="max-w-6xl mx-auto px-6 lg:px-10 py-12">
+  <!--
+    EASIEST: action="" posts back to the SAME URL you're currently on (e.g. /booking)
+    So you don't need to guess the endpoint name.
+  -->
+  <form method="POST" action="" class="grid grid-cols-1 md:grid-cols-[1fr_340px] gap-12">
+    <!-- Selected cabin gets stored here -->
+    <input type="hidden" name="cabin" id="cabinInput" value="">
+
+    <!-- LEFT: Cabin list -->
+    <div class="flex flex-col gap-12 items-start">
+      {% set cabins = ['A', 'B', 'C', 'D'] %}
+      {% for c in cabins %}
+      <button
+        type="button"
+        class="cabin-card w-full max-w-[440px] bg-[#4B3D66] text-white flex items-center justify-between
+               px-10 py-7 shadow-sm
+               outline-none ring-0 ring-offset-2 ring-offset-brand-light
+               focus:ring-4 focus:ring-brand-accent/40"
+        data-cabin="{{ c }}"
+        aria-pressed="false"
+      >
+        <span class="text-5xl font-medium tracking-tight">Cabin {{ c }}</span>
+
+        <!-- Image placeholder -->
+        <div class="w-28 h-16 bg-black text-white flex items-center justify-center text-center
+                    text-xs font-semibold leading-tight">
+          IMAGE<br>HERE
+        </div>
+      </button>
+      {% endfor %}
+    </div>
+
+    <!-- RIGHT: Selection + Pay -->
+    <div class="md:border-l md:border-gray-200 md:pl-12 flex flex-col items-center justify-between py-10">
+      <!-- "No Cabin" box -->
+      <button
+        type="button"
+        id="clearCabin"
+        class="bg-[#89889B] text-white text-2xl font-medium w-56 py-4 text-center shadow-sm"
+      >
+        <span id="selectedCabinText">No Cabin</span>
+      </button>
+
+      <button
+        type="submit"
+        class="bg-[#40933E] hover:brightness-95 text-white text-3xl font-medium
+               w-64 py-5 text-center shadow-sm"
+      >
+        Pay
+      </button>
+    </div>
+  </form>
+</section>
+
+<script>
+  (() => {
+    const cards = document.querySelectorAll(".cabin-card");
+    const cabinInput = document.getElementById("cabinInput");
+    const selectedText = document.getElementById("selectedCabinText");
+    const clearBtn = document.getElementById("clearCabin");
+
+    function setSelected(letter) {
+      cabinInput.value = letter || "";
+      selectedText.textContent = letter ? `Cabin ${letter}` : "No Cabin";
+
+      cards.forEach(card => {
+        const active = card.dataset.cabin === letter;
+        card.style.boxShadow = active ? "0 0 0 4px rgba(168,195,160,0.9)" : "";
+        card.setAttribute("aria-pressed", active ? "true" : "false");
+      });
+    }
+
+    cards.forEach(card => {
+      card.addEventListener("click", () => setSelected(card.dataset.cabin));
+    });
+
+    clearBtn.addEventListener("click", () => setSelected(""));
+
+    // 👇 restore selection after refresh / after Pay
+    setSelected("{{ selected_cabin|default('') }}");
+  })();
+</script>
+{% endblock %}
