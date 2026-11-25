@@ -1,20 +1,117 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Fonteyn Customer Website & API
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+## Project Overview
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+An educational group project developed during the HBO-ICT
+programme at Fontys University of Applied Sciences.
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+The project focuses on developing a customer-facing web
+application with a separate backend API, database integration,
+authentication, containerization and CI/CD automation.
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+## Key Features
+
+### Customer Website
+- Customer registration and login.
+- Customer profile pages.
+- Booking functionality.
+- Payment-related functionality.
+- Frontend and backend communication.
+- Web interfaces using HTML, CSS and JavaScript.
+
+### Backend API
+- Python-based backend application.
+- Modular API architecture using Flask Blueprints.
+- Authentication and user management.
+- Database models and integration.
+- Payment-related API endpoints.
+
+### Security
+- User authentication.
+- Password hashing.
+- Environment-based configuration.
+- Separation of frontend, backend and database services.
+
+### Infrastructure & DevOps
+- Docker containerization.
+- Multi-container configuration using Docker Compose.
+- Nginx web server configuration.
+- Azure DevOps CI/CD pipelines.
+- Version control and collaborative development.
+
+## Technologies Used
+
+| Technology | Purpose |
+|---|---|
+| Python | Backend development |
+| Flask | Web application and API development |
+| HTML | Website structure |
+| CSS | Website styling |
+| JavaScript | Frontend functionality |
+| SQL | Database management |
+| Docker | Containerization |
+| Docker Compose | Multi-container infrastructure |
+| Nginx | Web server configuration |
+| Azure DevOps | CI/CD automation |
+| Git | Version control |
+
+## Project Structure
+
+    .
+    ├── Customer API/
+    │   ├── blueprints/
+    │   ├── app.py
+    │   ├── models.py
+    │   ├── requirements.txt
+    │   └── Dockerfile
+    ├── Customer Website/
+    │   ├── blueprints/
+    │   ├── static/
+    │   ├── templates/
+    │   ├── app.py
+    │   └── Dockerfile
+    ├── database/
+    │   └── schema.sql
+    ├── Nginx/
+    ├── docker-compose.yml
+    ├── azure-pipelines.yml
+    ├── azure-pipelines-cicd.yml
+    └── README.md
+
+## Learning Objectives
+
+- Full-stack application development.
+- Backend API development and integration.
+- Authentication and password security.
+- Relational database management.
+- Docker containerization.
+- Web server configuration.
+- CI/CD pipeline development.
+- Technical troubleshooting.
+- Collaborative software development.
+
+## Project Status
+
+This repository is an educational group project preserved
+for portfolio and learning purposes.
+
+Some functionality may be incomplete or require additional
+configuration. The application is not intended for
+production use.
+
+Sensitive environment configuration files are excluded
+from this repository.
+
+## Future Improvements
+
+- Improve authentication and authorization.
+- Implement additional input validation.
+- Expand automated testing.
+- Improve error handling and logging.
+- Implement automated security scanning.
+- Improve deployment documentation.
+
+## Contributors
+
+Developed collaboratively during the HBO-ICT programme
+at Fontys University of Applied Sciences.
